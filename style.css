@@ -1,0 +1,67 @@
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container-logo {
+  margin: 2rem;
+}
+
+.tag {
+  background: transparent;
+  border-radius: 1rem;
+  border: 0.5px solid #c4c4c4;
+  padding: 0.5rem;
+  margin: 0 0.2rem;
+  color: #911c1c;
+  font-size: 0.7rem;
+}
+.main-title {
+  font-size: 2.1rem;
+  font-weight: normal;
+  display: flex;
+  margin: 0 1rem;
+  color: #901c1c;
+}
+
+/* photograph section */
+
+.photograph {
+  width: 16rem;
+  height: 21rem;
+  border: 4px black solid;
+  display: flex;
+  justify-content: center;
+}
+
+.photograph-link {
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+  border: 3px green solid;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
+  color: #d3573c;
+}
+
+.photograph-img {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.photograph-name {
+  margin: 0;
+  font-weight: lighter;
+  font-size: 1.6rem;
+}
