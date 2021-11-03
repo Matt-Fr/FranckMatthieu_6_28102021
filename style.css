@@ -2,17 +2,16 @@ body {
   font-family: "DM Sans", sans-serif;
 }
 
-header {
+.header {
   display: flex;
 
   align-items: center;
   justify-content: space-around;
 }
-main {
+.main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 100%;
 }
 
 .container-logo {
@@ -82,6 +81,7 @@ main {
   margin: 0;
   font-weight: lighter;
   font-size: 2rem;
+  color: #d3573c;
 }
 
 .information-container {
@@ -94,7 +94,10 @@ main {
 
 .city,
 .price,
-.tagline {
+.tagline,
+.city-2,
+.price-2,
+.tagline-2 {
   margin: 0;
   font-weight: lighter;
 }
@@ -114,7 +117,7 @@ main {
 }
 
 @media screen and (max-width: 860px) {
-  header {
+  .header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -151,4 +154,66 @@ main {
     height: 2rem;
     width: auto;
   }
+}
+
+/* page photograph */
+.header-2 {
+  margin: 1rem 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.main-2 {
+  margin: 0 2rem;
+}
+
+.section-photograph-info {
+  background: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+}
+
+.information-container-2 {
+  display: flex;
+}
+
+.information-photograph {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.photograph-name-2 {
+  margin: 0;
+
+  font-weight: lighter;
+  font-size: 4rem;
+  color: #d3573c;
+}
+
+.city-2 {
+  font-size: 1.5rem;
+  color: #901c1c;
+  margin: 1rem 0;
+}
+
+.tagline-2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.price-2 {
+  font-size: 0.6rem;
+  color: #757575;
+}
+
+.btn-contact {
+  margin: 1rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+  background: #901c1c;
+  border-radius: 0.3rem;
+  border: 0;
+  padding: 1rem 0.5rem;
 }
