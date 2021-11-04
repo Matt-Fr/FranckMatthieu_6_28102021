@@ -19,7 +19,7 @@
   </head>
   <body>
     <header class="header-2">
-      <a href="index.html" class="container-logo">
+      <a href="index.html" class="container-logo-2">
         <img src="./logo.svg" alt="logo" class="logo" />
       </a>
     </header>
@@ -44,9 +44,20 @@
         <img
           src="./Sample Photos/Photographers ID Photos/EllieRoseWilkens.jpg"
           alt=""
-          class="photograph-img"
+          class="photograph-img-2"
         />
       </section>
+
+      <!-- vertical dropdown menu -->
+      <div class="container-label">
+        <label id="label-criteria" for="criteria">Trier par</label>
+
+        <select name="criteria" id="criteria">
+          <option value="popularity">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
+      </div>
 
       <!-- section photo -->
 
@@ -153,6 +164,10 @@
           </div>
         </article>
       </section>
+      <div class="container-like-info">
+        <span class="total-likes">683 <i class="fas fa-heart"></i></span>
+        <span class="price-2">400€ / jour</span>
+      </div>
     </main>
   </body>
 </html>

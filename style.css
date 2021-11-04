@@ -70,7 +70,8 @@ body {
   color: #d3573c;
 }
 
-.photograph-img {
+.photograph-img,
+.photograph-img-2 {
   width: 12.5rem;
   height: 12.5rem;
   border-radius: 50%;
@@ -96,7 +97,6 @@ body {
 .price,
 .tagline,
 .city-2,
-.price-2,
 .tagline-2 {
   margin: 0;
   font-weight: lighter;
@@ -203,13 +203,33 @@ body {
   margin-bottom: 1rem;
 }
 
-.price-2 {
-  font-size: 0.6rem;
-  color: #757575;
-}
-
 .btn-contact {
   margin: 1rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+  background: #901c1c;
+  border-radius: 0.3rem;
+  border: 0;
+  padding: 1rem 0.5rem;
+}
+
+.btn-contact:hover {
+  cursor: pointer;
+  color: black;
+  background: #db8876;
+}
+
+/* drop down menu */
+.container-label {
+  margin: 2rem 0;
+}
+
+#label-criteria {
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+#criteria {
   color: #ffffff;
   font-size: 1.2rem;
   background: #901c1c;
@@ -227,7 +247,7 @@ body {
 }
 
 .img-container {
-  height: 25rem;
+  height: 22rem;
   width: 22rem;
   margin: 1rem 0;
 
@@ -235,7 +255,6 @@ body {
   flex-direction: column;
   display: flex;
   justify-content: center;
-  border-radius: 0.3rem;
 }
 
 .img-link {
@@ -248,6 +267,7 @@ body {
   min-width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 0.3rem;
 }
 
 .img-description-container {
@@ -263,4 +283,65 @@ body {
 }
 .number-likes {
   font-weight: bold;
+}
+
+.container-like-info {
+  background: #db8876;
+  width: 15rem;
+  display: flex;
+  padding: 1.3rem;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  right: 2rem;
+}
+
+@media screen and (max-width: 870px) {
+  .container-like-info {
+    display: none;
+  }
+  .btn-container {
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .btn-contact {
+    color: #ffffff;
+    font-size: 1.2rem;
+    background: #901c1c;
+    border-radius: 0.3rem;
+    border: 0;
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .section-photograph-info {
+    padding: 0;
+    background: transparent;
+  }
+  .img-container {
+    width: 100%;
+    height: 14rem;
+  }
+  .container-label {
+    display: none;
+  }
+  .photograph-img-2 {
+    width: 7rem;
+    height: 7rem;
+  }
+  .photograph-name-2 {
+    font-size: 2.1rem;
+  }
+  .city-2 {
+    font-size: 0.7rem;
+    margin: 0.3rem;
+  }
+  .tagline-2 {
+    font-size: 0.7rem;
+    margin: 0.3rem;
+  }
 }
