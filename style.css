@@ -217,3 +217,50 @@ body {
   border: 0;
   padding: 1rem 0.5rem;
 }
+
+/* section photo */
+
+.section-photo-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.img-container {
+  height: 25rem;
+  width: 22rem;
+  margin: 1rem 0;
+
+  overflow: hidden;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.3rem;
+}
+
+.img-link {
+  min-width: 100%;
+  height: 90%;
+}
+
+.image {
+  overflow: hidden;
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-description-container {
+  display: flex;
+  height: 10%;
+  align-items: center;
+  justify-content: space-between;
+  color: #901c1c;
+}
+
+.img-title {
+  margin: 0;
+}
+.number-likes {
+  font-weight: bold;
+}
