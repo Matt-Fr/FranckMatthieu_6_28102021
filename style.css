@@ -359,10 +359,6 @@ body {
   z-index: 100;
 }
 
-.open {
-  display: block;
-}
-
 .modal-content {
   overflow: hidden;
   width: 100%;
@@ -427,6 +423,81 @@ body {
   font-size: 2rem;
 }
 
+/* modal form */
+
+.bg-form {
+  background: rgba(196, 196, 196, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: none;
+}
+
+.container-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #db8876;
+  padding: 2rem;
+  border-radius: 0.3rem;
+  width: 50%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-form {
+  font-weight: 4rem;
+  margin: 0;
+  width: 75%;
+  font-weight: normal;
+}
+
+.close-btn-modal {
+  position: absolute;
+  top: 2.1rem;
+  right: 1.8rem;
+  color: white;
+  background: none;
+  border: none;
+  font-size: 2rem;
+}
+
+.btn-form {
+  width: 10rem;
+  height: 4.3rem;
+  font-size: 1.1rem;
+  color: white;
+  background: #901c1c;
+  border: none;
+  border-radius: 0.3rem;
+  margin-top: 2rem;
+}
+
+.input {
+  border: none;
+  border-radius: 0.2rem;
+  height: 4rem;
+  font-size: 1.5rem;
+}
+
+.label-form {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: #312e2e;
+}
+#form-message {
+  border: none;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+}
+
 @media screen and (max-width: 500px) {
   .main-img {
     width: 60%;
@@ -445,71 +516,28 @@ body {
     font-size: 1rem;
     right: 7%;
   }
+  .container-form {
+    width: 80%;
+  }
+  .title-form {
+    font-size: 1.8rem;
+  }
+  .label-form {
+    font-size: 1.3rem;
+  }
+  .btn-form {
+    width: 10rem;
+    height: 1.6rem;
+    font-size: 1.1rem;
+    color: white;
+    background: #901c1c;
+    border: none;
+    border-radius: 0.3rem;
+    margin-top: 1rem;
+    align-self: center;
+  }
 }
 
-/* modal */
-
-/* .bg-modal {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(196, 196, 196, 0.4);
-  position: fixed;
-  top: 0;
-} */
-
-/* @media screen and (max-width: 800px) {
-  .main-img {
-    max-width: 80%;
-    height: 20rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-
-    object-fit: cover;
-  }
-
-  .prev-btn {
-    position: absolute;
-    top: 50%;
-    left: 2rem;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-    color: #901c1c;
-    border: none;
-    background: white;
-    font-size: 1rem;
-  }
-  .next-btn {
-    position: absolute;
-    top: 50%;
-    right: 0rem;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-    color: #901c1c;
-    border: none;
-    background: white;
-    font-size: 1rem;
-  }
-
-  .image-name {
-    position: absolute;
-    bottom: 9rem;
-    left: 3.2rem;
-    color: #901c1c;
-    border: none;
-    background: white;
-    font-size: 1rem;
-    font-weight: normal;
-  }
-
-  .close-btn {
-    position: absolute;
-    top: 27%;
-    right: 1rem;
-    color: #901c1c;
-    border: none;
-    background: white;
-    font-size: 1rem;
-  }
-} */
+.open {
+  display: block;
+}
