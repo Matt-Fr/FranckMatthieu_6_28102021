@@ -1,7 +1,3 @@
-html {
-  position: relative;
-}
-
 body {
   font-family: "DM Sans", sans-serif;
 }
@@ -307,7 +303,7 @@ body {
   .btn-container {
     position: fixed;
     bottom: 0;
-    z-index: 100;
+    z-index: 10;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -352,12 +348,168 @@ body {
 
 /* lightbox */
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: none;
+  z-index: 100;
+}
+
+.open {
+  display: block;
+}
+
+.modal-content {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  /* width: 80%;
+  height: 50vh; */
+}
+
+.main-img {
+  width: 80%;
+  height: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+
+  object-fit: cover;
+}
+
+.prev-btn {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: #901c1c;
+  border: none;
+  background: white;
+  font-size: 2rem;
+}
+.next-btn {
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: #901c1c;
+  border: none;
+  background: white;
+  font-size: 2rem;
+}
+
+.image-name {
+  position: absolute;
+  bottom: 7%;
+  left: 10%;
+  color: #901c1c;
+  border: none;
+  background: white;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15%;
+  right: 4%;
+  color: #901c1c;
+  border: none;
+  background: white;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 500px) {
+  .main-img {
+    width: 60%;
+    height: 15rem;
+  }
+  .close-btn {
+    font-size: 1rem;
+    right: 10%;
+    top: 35%;
+  }
+  .prev-btn {
+    font-size: 1rem;
+    left: 10%;
+  }
+  .next-btn {
+    font-size: 1rem;
+    right: 7%;
+  }
+}
+
 /* modal */
 
-.bg-modal {
+/* .bg-modal {
   width: 100%;
   height: 100%;
   background-color: rgba(196, 196, 196, 0.4);
-  position: absolute;
+  position: fixed;
   top: 0;
-}
+} */
+
+/* @media screen and (max-width: 800px) {
+  .main-img {
+    max-width: 80%;
+    height: 20rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+
+    object-fit: cover;
+  }
+
+  .prev-btn {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    color: #901c1c;
+    border: none;
+    background: white;
+    font-size: 1rem;
+  }
+  .next-btn {
+    position: absolute;
+    top: 50%;
+    right: 0rem;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    color: #901c1c;
+    border: none;
+    background: white;
+    font-size: 1rem;
+  }
+
+  .image-name {
+    position: absolute;
+    bottom: 9rem;
+    left: 3.2rem;
+    color: #901c1c;
+    border: none;
+    background: white;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 27%;
+    right: 1rem;
+    color: #901c1c;
+    border: none;
+    background: white;
+    font-size: 1rem;
+  }
+} */
