@@ -63,7 +63,7 @@ const photographers = [
 
 fetch("./photographers.json")
   .then((response) => response.json())
-  .then((data) => console.log(data))
+  .then((data) => console.log(data.photographers))
   .catch((error) => console.log(error));
 
 const section = document.querySelector(".photograph-container");
