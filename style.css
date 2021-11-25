@@ -467,6 +467,7 @@ body {
   background: none;
   border: none;
   font-size: 2rem;
+  z-index: 100;
 }
 
 .btn-form {
@@ -540,4 +541,9 @@ body {
 
 .open {
   display: block;
+}
+
+.error-msg {
+  color: #901c1c;
+  display: none;
 }

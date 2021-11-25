@@ -66,7 +66,7 @@
           <a href="" class="img-link">
             <img
               class="image"
-              src="./Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              src="./Sample Photos/Marcel/Architecture_On_a_hill.jpg"
               alt=""
             />
           </a>
@@ -83,7 +83,7 @@
           <a href="" class="img-link">
             <img
               class="image"
-              src="./Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              src="./Sample Photos/Mimi/Event_PintoWedding.jpg"
               alt=""
             />
           </a>
@@ -100,7 +100,7 @@
           <a href="" class="img-link">
             <img
               class="image"
-              src="./Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              src="./Sample Photos/Rhode/Event_ProductPitch.jpg"
               alt=""
             />
           </a>
@@ -117,7 +117,7 @@
           <a href="" class="img-link">
             <img
               class="image"
-              src="./Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              src="./Sample Photos/Tracy/Event_Sparklers.jpg"
               alt=""
             />
           </a>
@@ -134,7 +134,7 @@
           <a href="" class="img-link">
             <img
               class="image"
-              src="./Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              src="./Sample Photos/Mimi/Portrait_Background.jpg"
               alt=""
             />
           </a>
@@ -151,7 +151,7 @@
           <a href="" class="img-link">
             <img
               class="image"
-              src="./Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              src="./Sample Photos/Nabeel/Travel_On_the_Road.jpg"
               alt=""
             />
           </a>
@@ -198,15 +198,25 @@
 
           <form class="form">
             <label class="label-form">prénom</label>
-            <input type="text" class="input" />
+            <input type="text" class="input" id="first" />
+            <span class="error-msg"
+              >Veuillez entrer 2 caractères ou plus pour le champ du
+              prénom.</span
+            >
             <label class="label-form">Nom</label>
-            <input type="text" class="input" />
+            <input type="text" class="input" id="last" />
+            <span class="error-msg"
+              >Veuillez entrer 2 caractères ou plus pour le champ du nom.</span
+            >
             <label class="label-form">Email</label>
-            <input type="email" class="input" />
+            <input type="email" class="input" id="email" />
+            <span class="error-msg">L'adresse email doit être valide</span>
+
             <label class="label-form">Votre message</label>
 
             <textarea name="message" id="form-message" cols="30" rows="10">
             </textarea>
+            <span class="error-msg">Veuillez écrire un message</span>
 
             <button type="submit" class="btn-form">Envoyer</button>
           </form>
@@ -217,5 +227,6 @@
         <div class="modal-content"></div>
       </div> -->
     </main>
+    <script src="./Pages/photographers.js"></script>
   </body>
 </html>

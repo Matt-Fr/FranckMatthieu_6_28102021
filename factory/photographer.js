@@ -1,6 +1,9 @@
 function photographerFactory(data) {
   const { name, portrait, city, tagline, price } = data;
 
+  const tags = data.tags;
+  console.log(tags);
+
   const picture = `Sample Photos/Photographers ID Photos/${portrait}`;
 
   function getUserCardDOM() {
