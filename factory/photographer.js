@@ -1,8 +1,5 @@
 function photographerFactory(data) {
-  const { name, portrait, city, tagline, price } = data;
-
-  const tags = data.tags;
-  console.log(tags);
+  const { name, id, portrait, city, tagline, price } = data;
 
   const picture = `Sample Photos/Photographers ID Photos/${portrait}`;
 
@@ -11,6 +8,7 @@ function photographerFactory(data) {
     article.className = "photograph";
     const link = document.createElement("a");
     link.className = "photograph-link";
+    link.href = `./photograph.html?id=${id}`;
 
     const img = document.createElement("img");
     img.setAttribute("src", picture);
@@ -46,5 +44,5 @@ function photographerFactory(data) {
 
     return article;
   }
-  return { name, picture, getUserCardDOM };
+  return { name, id, city, tagline, price, picture, getUserCardDOM };
 }
