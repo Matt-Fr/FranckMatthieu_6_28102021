@@ -23,15 +23,26 @@ const ini = async () => {
 
 ini();
 
+const getMedia = async () => {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const id = parseInt(urlSearchParams.get("id"));
+  const data = await getPhotogra();
+  const media = data.media;
+  console.log(media);
+  const selectedMedia = media.filter((media) => media.photographerId === id);
+
+  return selectedMedia;
+};
+
+getMedia();
+
 async function displayinfo() {
   const name = document.querySelector(".photograph-name-2");
   const formTitle = document.querySelector(".title-form");
   const city = document.querySelector(".city-2");
   const tagline = document.querySelector(".tagline-2");
   const portrait = document.querySelector(".photograph-img-2");
-
   const photographer = await ini();
-  console.log(photographer);
   name.textContent = photographer[0].name;
   formTitle.textContent = `Contactez-moi ${photographer[0].name}`;
   city.textContent = `${photographer[0].city}, ${photographer[0].country}`;
@@ -40,6 +51,31 @@ async function displayinfo() {
     "src",
     `./Sample Photos/Photographers ID Photos/${photographer[0].portrait}`
   );
+
+  //display media
+  const sectionMedia = document.querySelector(".section-photo-container");
+
+  const media = await getMedia();
+  let displayMedia = media.map((element) => {
+    return `<article class="img-container">
+        <a href="" class="img-link">
+          <img
+            class="image"
+            src="./Sample Photos/${element.photographerId}/${element.image}"
+            alt=""
+          />
+        </a>
+        <div class="img-description-container">
+          <h3 class="img-title">${element.title}</h3>
+          <div class="heart-container">
+            <span class="number-likes">${element.likes}</span>
+            <i class="fas fa-heart"></i>
+          </div>
+        </div>
+      </article>`;
+  });
+  displayMedia = displayMedia.join("");
+  sectionMedia.innerHTML = displayMedia;
 }
 
 displayinfo();
