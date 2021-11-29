@@ -29,10 +29,12 @@ async function displayinfo() {
   const city = document.querySelector(".city-2");
   const tagline = document.querySelector(".tagline-2");
   const portrait = document.querySelector(".photograph-img-2");
+  const Price = document.querySelector(".price-2");
   const photographer = await ini();
   name.textContent = photographer[0].name;
   formTitle.textContent = `Contactez-moi ${photographer[0].name}`;
   city.textContent = `${photographer[0].city}, ${photographer[0].country}`;
+  Price.textContent = `${photographer[0].price}€ / jour`;
   tagline.textContent = photographer[0].tagline;
   portrait.setAttribute(
     "src",
@@ -44,6 +46,7 @@ async function displayinfo() {
 }
 
 displayinfo();
+
 // async function displayData(photographers) {
 //   const photographersSection = document.querySelector(
 //     ".photograph-container"
