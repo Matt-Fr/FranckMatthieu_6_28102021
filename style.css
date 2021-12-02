@@ -548,3 +548,11 @@ body {
   color: #901c1c;
   display: none;
 }
+
+.clicked {
+  color: red;
+}
+
+.heart-container {
+  cursor: pointer;
+}

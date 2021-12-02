@@ -150,23 +150,91 @@ function mediaFactory(data) {
     heart.className = "fas fa-heart";
     divHeart.appendChild(heart);
 
+    // obtenir le nombre total de like
+    function getTotalLikes() {
+      const totalLikeSpan = document.querySelectorAll(".number-likes");
+      let totalLikes = 0;
+      totalLikeSpan.forEach((likes) => {
+        totalLikes += parseInt(likes.innerHTML);
+        const likeCounter = document.querySelector(".total-likes");
+        likeCounter.innerHTML = `<span class="total-likes">
+              ${totalLikes} <i class="fas fa-heart"></i>
+            </span>`;
+      });
+    }
+    getTotalLikes();
+    const hearts = document.querySelectorAll(".heart-container");
+
+    //   //incrémenter like quand le coeur est clické
+    hearts.forEach((heart) => {
+      heart.addEventListener("click", () => {
+        const likes = heart.parentElement.querySelector(".number-likes");
+        if (heart.classList.contains("clicked")) {
+          likes.innerHTML = parseInt(likes.innerHTML) - 1;
+          heart.classList.remove("clicked");
+        } else {
+          likes.innerHTML = parseInt(likes.innerHTML) + 1;
+          heart.classList.add("clicked");
+        }
+        getTotalLikes();
+      });
+    });
     return article;
   }
   return { getMediaCard };
 }
 
 // obtenir le nombre total de like
-function getTotalLikes() {
-  const totalLikeSpan = document.querySelectorAll(".number-likes");
-  let totalLikes = 0;
-  totalLikeSpan.forEach((likes) => {
-    totalLikes += parseInt(likes.innerHTML);
-    const likeCounter = document.querySelector(".total-likes");
-    likeCounter.innerHTML = `<span class="total-likes">
-          ${totalLikes} <i class="fas fa-heart"></i>
-        </span>`;
-  });
-}
+// function getTotalLikes() {
+//   const totalLikeSpan = document.querySelectorAll(".number-likes");
+//   let totalLikes = 0;
+//   totalLikeSpan.forEach((likes) => {
+//     totalLikes += parseInt(likes.innerHTML);
+//   });
+//   return totalLikes;
+// }
+
+// function displayTotalLikes() {
+//   const totalLikes = getTotalLikes();
+//   const likeCounter = document.querySelector(".total-likes");
+//   likeCounter.innerHTML = `<span class="total-likes">
+//            ${totalLikes} <i class="fas fa-heart"></i>
+//         </span>`;
+// }
+
+// function heartListener() {
+//   const hearts = document.querySelectorAll(".heart-container");
+
+//   hearts.forEach((heart) => {
+//     heart.addEventListener("click", () => {
+//       const likes = heart.parentElement.querySelector(".number-likes");
+//       if (heart.classList.contains("clicked")) {
+//         likes.innerHTML = parseInt(likes.innerHTML) - 1;
+//         heart.classList.remove("clicked");
+//       } else {
+//         likes.innerHTML = parseInt(likes.innerHTML) + 1;
+//         heart.classList.add("clicked");
+//       }
+//     });
+//   });
+// }
+
+// const hearts = document.querySelectorAll(".heart-container");
+
+// //   //incrémenter like quand le coeur est clické
+// //   hearts.forEach((heart) => {
+// //     heart.addEventListener("click", () => {
+// //       const likes = heart.parentElement.querySelector(".number-likes");
+// //       if (heart.classList.contains("clicked")) {
+// //         likes.innerHTML = parseInt(likes.innerHTML) - 1;
+// //         heart.classList.remove("clicked");
+// //       } else {
+// //         likes.innerHTML = parseInt(likes.innerHTML) + 1;
+// //         heart.classList.add("clicked");
+// //       }
+// //       getTotalLikes();
+// //     });
+// //   });
 
 async function displayMedia(medias) {
   const sectionMedia = document.querySelector(".section-photo-container");
@@ -178,10 +246,10 @@ async function displayMedia(medias) {
   });
 }
 
-async function initia() {
+async function initi() {
   // Récupère les datas des media
   const media = await getMedia();
   displayMedia(media);
 }
 
-initia();
+initi();
