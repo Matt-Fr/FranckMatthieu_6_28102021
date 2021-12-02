@@ -7,7 +7,7 @@ const getMedia = async () => {
 
   const selectedMedia = media.filter((media) => media.photographerId === id);
 
-  return [...selectedMedia];
+  return selectedMedia;
 };
 
 // créer une carte pour chaque média
@@ -126,11 +126,15 @@ function mediaFactory(data) {
       pic.className = "image";
       linkPicture.appendChild(pic);
     } else if (video) {
-      const video = document.createElement("video");
-      video.className = "video";
-      video.setAttribute("type", "video/mp4");
-      video.setAttribute("src", `./Sample Photos/${photographerId}/${video}`);
-      linkPicture.appendChild(video);
+      const videotag = document.createElement("video");
+      videotag.className = "video";
+      videotag.setAttribute("controls", "");
+      const source = document.createElement("source");
+
+      source.setAttribute("type", "video/mp4");
+      source.setAttribute("src", `./Sample Photos/${photographerId}/${video}`);
+      videotag.appendChild(source);
+      linkPicture.appendChild(videotag);
     }
     const divDecription = document.createElement("div");
     divDecription.className = "img-description-container";
@@ -141,6 +145,17 @@ function mediaFactory(data) {
     divDecription.appendChild(titleMedia);
     const divHeart = document.createElement("div");
     divHeart.className = "heart-container";
+    divHeart.addEventListener("click", () => {
+      const likes = heart.parentElement.querySelector(".number-likes");
+      if (heart.classList.contains("clicked")) {
+        likes.innerHTML = parseInt(likes.innerHTML) - 1;
+        heart.classList.remove("clicked");
+      } else {
+        likes.innerHTML = parseInt(likes.innerHTML) + 1;
+        heart.classList.add("clicked");
+      }
+      getTotalLikes();
+    });
     divDecription.appendChild(divHeart);
     const numberLikes = document.createElement("span");
     numberLikes.className = "number-likes";
@@ -166,19 +181,19 @@ function mediaFactory(data) {
     const hearts = document.querySelectorAll(".heart-container");
 
     //   //incrémenter like quand le coeur est clické
-    hearts.forEach((heart) => {
-      heart.addEventListener("click", () => {
-        const likes = heart.parentElement.querySelector(".number-likes");
-        if (heart.classList.contains("clicked")) {
-          likes.innerHTML = parseInt(likes.innerHTML) - 1;
-          heart.classList.remove("clicked");
-        } else {
-          likes.innerHTML = parseInt(likes.innerHTML) + 1;
-          heart.classList.add("clicked");
-        }
-        getTotalLikes();
-      });
-    });
+    // hearts.forEach((heart) => {
+    //   heart.addEventListener("click", () => {
+    //     const likes = heart.parentElement.querySelector(".number-likes");
+    //     if (heart.classList.contains("clicked")) {
+    //       likes.innerHTML = parseInt(likes.innerHTML) - 1;
+    //       heart.classList.remove("clicked");
+    //     } else {
+    //       likes.innerHTML = parseInt(likes.innerHTML) + 1;
+    //       heart.classList.add("clicked");
+    //     }
+    //     getTotalLikes();
+    //   });
+    // });
     return article;
   }
   return { getMediaCard };
@@ -236,10 +251,27 @@ function mediaFactory(data) {
 // //     });
 // //   });
 
-async function displayMedia(medias) {
+async function displayMedia(medias, sortType = "likes") {
   const sectionMedia = document.querySelector(".section-photo-container");
+  sectionMedia.innerHTML = "";
+  const sortedMedias = [...medias];
+  switch (sortType) {
+    case "likes":
+      sortedMedias.sort((a, b) => b.likes - a.likes);
+      break;
 
-  medias.forEach((media) => {
+    case "date":
+      break;
+
+    case "title":
+      break;
+
+    default:
+      sortedMedias.sort((a, b) => b.likes - a.likes);
+      break;
+  }
+
+  sortedMedias.forEach((media) => {
     const mediaModel = mediaFactory(media);
     const cardMedia = mediaModel.getMediaCard();
     sectionMedia.appendChild(cardMedia);
