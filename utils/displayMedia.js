@@ -253,28 +253,48 @@ function mediaFactory(data) {
 
 async function displayMedia(medias, sortType = "likes") {
   const sectionMedia = document.querySelector(".section-photo-container");
-  sectionMedia.innerHTML = "";
+  const select = document.querySelector("#criteria");
+
   const sortedMedias = [...medias];
-  switch (sortType) {
-    case "likes":
-      sortedMedias.sort((a, b) => b.likes - a.likes);
-      break;
-
-    case "date":
-      break;
-
-    case "title":
-      break;
-
-    default:
-      sortedMedias.sort((a, b) => b.likes - a.likes);
-      break;
-  }
 
   sortedMedias.forEach((media) => {
     const mediaModel = mediaFactory(media);
     const cardMedia = mediaModel.getMediaCard();
     sectionMedia.appendChild(cardMedia);
+  });
+  select.addEventListener("change", function (e) {
+    sortType = e.target.value;
+    console.log(sortType);
+    console.log(sortedMedias);
+
+    switch (sortType) {
+      case "likes":
+        sortedMedias.sort((a, b) => b.likes - a.likes);
+        break;
+
+      case "date":
+        sortedMedias.sort(function (a, b) {
+          return new Date(b.date) - new Date(a.date);
+        });
+        break;
+
+      case "title":
+        // sortedMedias.sort((a, b) => a.title.localeCompare(b.title));
+        sortedMedias.sort(function (a, b) {
+          return a.title === b.title ? 0 : a.title < b.title ? -1 : 1;
+        });
+        break;
+
+      default:
+        sortedMedias.sort((a, b) => b.likes - a.likes);
+        break;
+    }
+    sectionMedia.innerHTML = "";
+    sortedMedias.forEach((media) => {
+      const mediaModel = mediaFactory(media);
+      const cardMedia = mediaModel.getMediaCard();
+      sectionMedia.appendChild(cardMedia);
+    });
   });
 }
 

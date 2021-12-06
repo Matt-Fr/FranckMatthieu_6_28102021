@@ -269,6 +269,7 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 0.3rem;
+  cursor: pointer;
 }
 
 .img-description-container {
