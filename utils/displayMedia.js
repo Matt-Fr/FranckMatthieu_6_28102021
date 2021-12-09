@@ -302,6 +302,7 @@ async function initi() {
   // Récupère les datas des media
   const media = await getMedia();
   displayMedia(media);
+  Lightbox.init();
 }
 
 initi();
