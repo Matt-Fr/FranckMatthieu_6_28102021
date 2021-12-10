@@ -99,8 +99,6 @@ async function displayMedia(medias, sortType = "likes") {
   });
   select.addEventListener("change", function (e) {
     sortType = e.target.value;
-    console.log(sortType);
-    console.log(sortedMedias);
 
     switch (sortType) {
       case "likes":
