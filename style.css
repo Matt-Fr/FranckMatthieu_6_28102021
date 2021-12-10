@@ -423,6 +423,7 @@ body {
   border: none;
   background: white;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 /* modal form */
