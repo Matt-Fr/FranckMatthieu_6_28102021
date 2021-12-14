@@ -1,16 +1,4 @@
-//obtenir les médias du Json
-const getMedia = async () => {
-  const urlSearchParams = new URLSearchParams(window.location.search);
-  const id = parseInt(urlSearchParams.get("id"));
-  const data = await getPhotogra();
-  const media = data.media;
-
-  const selectedMedia = media.filter((media) => media.photographerId === id);
-
-  return selectedMedia;
-};
-
-function mediaFactory(data) {
+export function mediaFactory(data) {
   const { id, photographerId, title, video, image, likes, date, price } = data;
 
   function getMediaCard() {
@@ -25,6 +13,8 @@ function mediaFactory(data) {
       const pic = document.createElement("img");
       pic.setAttribute("src", `./Sample Photos/${photographerId}/${image}`);
       pic.className = "image";
+      // ajouter addeventlistener pour lightbox
+      //ajout new lightbox
       linkPicture.appendChild(pic);
     } else if (video) {
       const videotag = document.createElement("video");
@@ -79,63 +69,8 @@ function mediaFactory(data) {
       });
     }
     getTotalLikes();
-    const hearts = document.querySelectorAll(".heart-container");
 
     return article;
   }
   return { getMediaCard };
 }
-
-async function displayMedia(medias, sortType = "likes") {
-  const sectionMedia = document.querySelector(".section-photo-container");
-  const select = document.querySelector("#criteria");
-
-  const sortedMedias = [...medias];
-
-  sortedMedias.forEach((media) => {
-    const mediaModel = mediaFactory(media);
-    const cardMedia = mediaModel.getMediaCard();
-    sectionMedia.appendChild(cardMedia);
-  });
-  select.addEventListener("change", function (e) {
-    sortType = e.target.value;
-
-    switch (sortType) {
-      case "likes":
-        sortedMedias.sort((a, b) => b.likes - a.likes);
-        break;
-
-      case "date":
-        sortedMedias.sort(function (a, b) {
-          return new Date(b.date) - new Date(a.date);
-        });
-        break;
-
-      case "title":
-        // sortedMedias.sort((a, b) => a.title.localeCompare(b.title));
-        sortedMedias.sort(function (a, b) {
-          return a.title === b.title ? 0 : a.title < b.title ? -1 : 1;
-        });
-        break;
-
-      default:
-        sortedMedias.sort((a, b) => b.likes - a.likes);
-        break;
-    }
-    sectionMedia.innerHTML = "";
-    sortedMedias.forEach((media) => {
-      const mediaModel = mediaFactory(media);
-      const cardMedia = mediaModel.getMediaCard();
-      sectionMedia.appendChild(cardMedia);
-    });
-  });
-}
-
-async function initi() {
-  // Récupère les datas des media
-  const media = await getMedia();
-  displayMedia(media);
-  Lightbox.init();
-}
-
-initi();
