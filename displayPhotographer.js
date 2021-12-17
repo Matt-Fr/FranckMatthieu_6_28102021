@@ -33,7 +33,4 @@ export async function displayPhotographer() {
     "src",
     `./Sample Photos/Photographers ID Photos/${photographer[0].portrait}`
   );
-
-  //display media
-  const sectionMedia = document.querySelector(".section-photo-container");
 }

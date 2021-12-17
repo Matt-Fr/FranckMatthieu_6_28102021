@@ -40,6 +40,7 @@ export async function displayMedia(medias, sortType = "likes") {
     sectionMedia.innerHTML = "";
     sortedMedias.forEach((media) => {
       const mediaModel = mediaFactory(media);
+
       const cardMedia = mediaModel.getMediaCard();
       sectionMedia.appendChild(cardMedia);
     });

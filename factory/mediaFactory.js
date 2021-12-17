@@ -13,9 +13,41 @@ export function mediaFactory(data) {
       const pic = document.createElement("img");
       pic.setAttribute("src", `./Sample Photos/${photographerId}/${image}`);
       pic.className = "image";
-      // ajouter addeventlistener pour lightbox
-      //ajout new lightbox
       linkPicture.appendChild(pic);
+      // ajouter addeventlistener pour lightbox
+
+      //ajout new lightbox
+      const lightbox = document.querySelector(".modal");
+      const Lightboxcontainer = document.createElement("div");
+      Lightboxcontainer.className = "lightbox-container";
+      const imgLightbox = document.createElement("img");
+      imgLightbox.className = "main-img";
+
+      imgLightbox.setAttribute("id", `${photographerId}`);
+      imgLightbox.setAttribute(
+        "src",
+        `./Sample Photos/${photographerId}/${image}`
+      );
+      const titleLightbox = document.createElement("h3");
+      titleLightbox.className = "image-name";
+      titleLightbox.textContent = `${title}`;
+      Lightboxcontainer.appendChild(imgLightbox);
+      Lightboxcontainer.appendChild(titleLightbox);
+      document.querySelector(".modal").appendChild(Lightboxcontainer);
+
+      linkPicture.addEventListener("click", () => {
+        lightbox.classList.add("open");
+        Lightboxcontainer.classList.add("open");
+      });
+
+      const closeBtn = document.querySelector(".close-btn");
+
+      closeBtn.addEventListener("click", () => {
+        lightbox.classList.remove("open");
+        Lightboxcontainer.classList.remove("open");
+      });
+
+      //fin lightbox
     } else if (video) {
       const videotag = document.createElement("video");
       videotag.className = "video";

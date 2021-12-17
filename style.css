@@ -361,6 +361,10 @@ body {
   z-index: 100;
 }
 
+.lightbox-container {
+  display: none;
+}
+
 .modal-content {
   overflow: hidden;
   width: 100%;
