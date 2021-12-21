@@ -12,6 +12,63 @@ export async function displayMedia(medias, sortType = "likes") {
     const cardMedia = mediaModel.getMediaCard();
     sectionMedia.appendChild(cardMedia);
   });
+  // let ixMedia = null;
+  // const btnNext = document.querySelector(".next-btn");
+  // btnNext.addEventListener("click", () => {
+  //   console.log("click");
+  //   sortedMedias.forEach((media, ix) => {
+  //     ixMedia = media.id === imgLightbox.id ? ix : ixMedia;
+  //     console.log(ixMedia);
+  //     console.log(ix);
+  //   });
+  // });
+  const lightboxBtns = document.querySelectorAll(".lightbox-btns");
+  const btnNext = document.querySelector(".next-btn");
+  const btnprev = document.querySelector(".prev-btn");
+  const lightbox = document.querySelector(".modal");
+
+  const images = document.querySelectorAll(".img-link");
+
+  const arrayImages = Array.from(images);
+
+  const lightboxImg = document.querySelector(".main-img");
+
+  const closeBtn = document.querySelector(".close-btn");
+
+  const lightboxTitle = document.querySelector(".image-name");
+
+  let activeImage;
+
+  //function
+
+  const setActiveImage = (selectedImage) => {
+    // lightboxImg.src = image.target.src;
+    lightboxImg.src = selectedImage.target.dataset.imagesrc;
+    activeImage = arrayImages.indexOf(selectedImage);
+    lightboxTitle.innerHTML = selectedImage.target.alt;
+  };
+
+  const showLightbox = () => {
+    lightbox.classList.add("open");
+  };
+
+  const hideLightbox = () => {
+    lightbox.classList.remove("open");
+  };
+
+  //eventListener
+
+  images.forEach((image) => {
+    image.addEventListener("click", (e) => {
+      showLightbox();
+      setActiveImage(e);
+    });
+  });
+
+  closeBtn.addEventListener("click", hideLightbox);
+
+  //end lightbox
+
   select.addEventListener("change", function (e) {
     sortType = e.target.value;
 

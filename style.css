@@ -395,6 +395,7 @@ body {
   border: none;
   background: white;
   font-size: 2rem;
+  cursor: pointer;
 }
 .next-btn {
   position: absolute;
@@ -406,6 +407,7 @@ body {
   border: none;
   background: white;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .image-name {

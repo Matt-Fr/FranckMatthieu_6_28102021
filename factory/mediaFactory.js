@@ -7,45 +7,52 @@ export function mediaFactory(data) {
     article.className = "img-container";
     const linkPicture = document.createElement("a");
     linkPicture.className = "img-link";
+    linkPicture.setAttribute("id", `${id}`);
     article.appendChild(linkPicture);
     // créer soit un élément photo ou video
     if (image) {
       const pic = document.createElement("img");
       pic.setAttribute("src", `./Sample Photos/${photographerId}/${image}`);
+      pic.setAttribute("alt", `${title}`);
       pic.className = "image";
+      pic.dataset.imagesrc = `./Sample Photos/${photographerId}/${image}`;
       linkPicture.appendChild(pic);
       // ajouter addeventlistener pour lightbox
 
       //ajout new lightbox
-      const lightbox = document.querySelector(".modal");
-      const Lightboxcontainer = document.createElement("div");
-      Lightboxcontainer.className = "lightbox-container";
-      const imgLightbox = document.createElement("img");
-      imgLightbox.className = "main-img";
+      // const lightbox = document.querySelector(".modal");
+      // const Lightboxcontainer = document.createElement("div");
+      // Lightboxcontainer.className = "lightbox-container";
 
-      imgLightbox.setAttribute("id", `${photographerId}`);
-      imgLightbox.setAttribute(
-        "src",
-        `./Sample Photos/${photographerId}/${image}`
-      );
-      const titleLightbox = document.createElement("h3");
-      titleLightbox.className = "image-name";
-      titleLightbox.textContent = `${title}`;
-      Lightboxcontainer.appendChild(imgLightbox);
-      Lightboxcontainer.appendChild(titleLightbox);
-      document.querySelector(".modal").appendChild(Lightboxcontainer);
+      // const imgLightbox = document.createElement("img");
+      // imgLightbox.className = "main-img";
 
-      linkPicture.addEventListener("click", () => {
-        lightbox.classList.add("open");
-        Lightboxcontainer.classList.add("open");
-      });
+      // imgLightbox.setAttribute("id", `${id}`);
+      // imgLightbox.setAttribute(
+      //   "src",
+      //   `./Sample Photos/${photographerId}/${image}`
+      // );
+      // const titleLightbox = document.createElement("h3");
+      // titleLightbox.className = "image-name";
+      // titleLightbox.textContent = `${title}`;
+      // Lightboxcontainer.appendChild(imgLightbox);
+      // Lightboxcontainer.appendChild(titleLightbox);
+      // document.querySelector(".modal").appendChild(Lightboxcontainer);
 
-      const closeBtn = document.querySelector(".close-btn");
+      //set lightbox
 
-      closeBtn.addEventListener("click", () => {
-        lightbox.classList.remove("open");
-        Lightboxcontainer.classList.remove("open");
-      });
+      // linkPicture.addEventListener("click", () => {
+      //   lightbox.classList.add("open");
+      //   Lightboxcontainer.classList.add("open");
+      //   console.log(imgLightbox.id);
+      // });
+
+      // const closeBtn = document.querySelector(".close-btn");
+
+      // closeBtn.addEventListener("click", () => {
+      //   lightbox.classList.remove("open");
+      //   Lightboxcontainer.classList.remove("open");
+      // });
 
       //fin lightbox
     } else if (video) {
