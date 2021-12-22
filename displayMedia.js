@@ -22,14 +22,18 @@ export async function displayMedia(medias, sortType = "likes") {
   //     console.log(ix);
   //   });
   // });
+  const lightbox = document.querySelector(".modal");
   const lightboxBtns = document.querySelectorAll(".lightbox-btns");
   const btnNext = document.querySelector(".next-btn");
   const btnprev = document.querySelector(".prev-btn");
-  const lightbox = document.querySelector(".modal");
 
-  const images = document.querySelectorAll(".img-link");
+  const images = document.querySelectorAll(".image");
 
   const arrayImages = Array.from(images);
+  console.log(arrayImages);
+
+  const lastImage = arrayImages.length - 1;
+  console.log(lastImage);
 
   const lightboxImg = document.querySelector(".main-img");
 
@@ -45,7 +49,9 @@ export async function displayMedia(medias, sortType = "likes") {
     // lightboxImg.src = image.target.src;
     lightboxImg.src = selectedImage.target.dataset.imagesrc;
     activeImage = arrayImages.indexOf(selectedImage);
+
     lightboxTitle.innerHTML = selectedImage.target.alt;
+    console.log(activeImage);
   };
 
   const showLightbox = () => {
@@ -54,6 +60,22 @@ export async function displayMedia(medias, sortType = "likes") {
 
   const hideLightbox = () => {
     lightbox.classList.remove("open");
+  };
+
+  const transitionSlideHandler = (moveItem) => {
+    moveItem.includes("left") ? transitionSlideLeft() : transitionSlideRight();
+  };
+
+  const transitionSlideLeft = () => {
+    console.log("left");
+    btnprev.focus();
+    activeImage === 0
+      ? setActiveImage(arrayImages[lastImage])
+      : setActiveImage(arrayImages[activeImage].previousElementSibling);
+  };
+  const transitionSlideRight = () => {
+    console.log("right");
+    btnNext.focus();
   };
 
   //eventListener
@@ -66,6 +88,15 @@ export async function displayMedia(medias, sortType = "likes") {
   });
 
   closeBtn.addEventListener("click", hideLightbox);
+  lightbox.addEventListener("click", hideLightbox);
+
+  lightboxBtns.forEach((btn) =>
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      transitionSlideHandler(e.currentTarget.id);
+    })
+  );
 
   //end lightbox
 

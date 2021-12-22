@@ -269,7 +269,12 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 0.3rem;
-  cursor: pointer;
+  cursor: zoom-in;
+}
+.image:hover,
+.video:hover {
+  opacity: 0.8;
+  transition: all 250ms ease-in-out;
 }
 
 .img-description-container {
@@ -383,6 +388,7 @@ body {
   position: absolute;
 
   object-fit: cover;
+  cursor: zoom-out;
 }
 
 .prev-btn {
