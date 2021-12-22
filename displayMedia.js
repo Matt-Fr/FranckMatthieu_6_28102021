@@ -12,26 +12,17 @@ export async function displayMedia(medias, sortType = "likes") {
     const cardMedia = mediaModel.getMediaCard();
     sectionMedia.appendChild(cardMedia);
   });
-  // let ixMedia = null;
-  // const btnNext = document.querySelector(".next-btn");
-  // btnNext.addEventListener("click", () => {
-  //   console.log("click");
-  //   sortedMedias.forEach((media, ix) => {
-  //     ixMedia = media.id === imgLightbox.id ? ix : ixMedia;
-  //     console.log(ixMedia);
-  //     console.log(ix);
-  //   });
-  // });
+
+  // Lightbox
+
   const lightbox = document.querySelector(".modal");
   const lightboxBtns = document.querySelectorAll(".lightbox-btns");
   const btnNext = document.querySelector(".next-btn");
   const btnprev = document.querySelector(".prev-btn");
-
   const images = document.querySelectorAll(".image");
 
   const arrayImages = Array.from(images);
   console.log(arrayImages);
-
   const lastImage = arrayImages.length - 1;
   console.log(lastImage);
 
@@ -46,11 +37,10 @@ export async function displayMedia(medias, sortType = "likes") {
   //function
 
   const setActiveImage = (selectedImage) => {
-    // lightboxImg.src = image.target.src;
-    lightboxImg.src = selectedImage.target.dataset.imagesrc;
+    lightboxImg.src = selectedImage.dataset.imagesrc;
+    lightboxTitle.innerHTML = selectedImage.alt;
     activeImage = arrayImages.indexOf(selectedImage);
 
-    lightboxTitle.innerHTML = selectedImage.target.alt;
     console.log(activeImage);
   };
 
@@ -83,7 +73,7 @@ export async function displayMedia(medias, sortType = "likes") {
   images.forEach((image) => {
     image.addEventListener("click", (e) => {
       showLightbox();
-      setActiveImage(e);
+      setActiveImage(image);
     });
   });
 
