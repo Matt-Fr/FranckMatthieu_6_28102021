@@ -17,6 +17,11 @@ async function init() {
   // Récupère les datas des media
   const media = await getMedia();
   displayMedia(media);
+  const select = document.querySelector("#criteria");
+  select.addEventListener("change", function (e) {
+    sortType = e.target.value;
+    displayMedia(media, sortType);
+  });
 }
 
 init();

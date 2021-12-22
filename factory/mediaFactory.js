@@ -2,7 +2,6 @@ export function mediaFactory(data) {
   const { id, photographerId, title, video, image, likes, date, price } = data;
 
   function getMediaCard() {
-    const sectionMedia = document.querySelector(".section-photo-container");
     const article = document.createElement("article");
     article.className = "img-container";
     const linkPicture = document.createElement("a");
