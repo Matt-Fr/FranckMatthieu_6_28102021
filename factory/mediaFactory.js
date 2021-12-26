@@ -13,17 +13,19 @@ export function mediaFactory(data) {
       const pic = document.createElement("img");
       pic.setAttribute("src", `./Sample Photos/${photographerId}/${image}`);
       pic.setAttribute("alt", `${title}`);
-      pic.className = "image";
+      pic.className = "lightbox-media image";
       pic.dataset.imagesrc = `./Sample Photos/${photographerId}/${image}`;
       linkPicture.appendChild(pic);
     } else if (video) {
       const videotag = document.createElement("video");
-      videotag.className = "video";
+      videotag.className = "lightbox-media video";
       videotag.setAttribute("controls", "");
       const source = document.createElement("source");
 
       source.setAttribute("type", "video/mp4");
       source.setAttribute("src", `./Sample Photos/${photographerId}/${video}`);
+      videotag.dataset.imagesrc = `./Sample Photos/${photographerId}/${video}`;
+      videotag.setAttribute("alt", `${title}`);
       videotag.appendChild(source);
       linkPicture.appendChild(videotag);
     }

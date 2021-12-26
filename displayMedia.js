@@ -41,12 +41,13 @@ export async function displayMedia(medias, sortType = "likes") {
   const lightboxBtns = document.querySelectorAll(".lightbox-btns");
   const btnNext = document.querySelector("#next");
   const btnprev = document.querySelector("#prev");
-  const images = document.querySelectorAll(".image");
+  const images = document.querySelectorAll(".lightbox-media");
   const arrayImages = Array.from(images);
   const lastImage = arrayImages.length - 1;
   const lightboxImg = document.querySelector(".main-img");
   const closeBtn = document.querySelector(".close-btn");
   const lightboxTitle = document.querySelector(".image-name");
+  const lightboxVideo = document.querySelector("#lightbox-video");
   let activeImage;
   console.log(arrayImages);
 
@@ -62,8 +63,15 @@ export async function displayMedia(medias, sortType = "likes") {
 
   const setActiveImage = (selectedImage) => {
     console.log(selectedImage);
-    lightboxImg.src = selectedImage.dataset.imagesrc;
-    lightboxTitle.innerHTML = selectedImage.alt;
+    if (selectedImage.classList.contains("video")) {
+      lightboxImg.src = "";
+      lightboxVideo.src = selectedImage.dataset.imagesrc;
+      lightboxTitle.innerHTML = selectedImage.alt;
+    } else {
+      lightboxVideo.src = "";
+      lightboxImg.src = selectedImage.dataset.imagesrc;
+      lightboxTitle.innerHTML = selectedImage.alt;
+    }
     activeImage = arrayImages.indexOf(selectedImage);
   };
 
