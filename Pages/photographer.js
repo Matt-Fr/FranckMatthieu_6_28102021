@@ -19,7 +19,7 @@ async function init() {
   displayMedia(media);
   const select = document.querySelector("#criteria");
   select.addEventListener("change", function (e) {
-    sortType = e.target.value;
+    const sortType = e.target.value;
     displayMedia(media, sortType);
   });
 }

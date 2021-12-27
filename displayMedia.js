@@ -66,9 +66,11 @@ export async function displayMedia(medias, sortType = "likes") {
     if (selectedImage.classList.contains("video")) {
       lightboxImg.src = "";
       lightboxVideo.src = selectedImage.dataset.imagesrc;
+      lightboxVideo.controls = true;
       lightboxTitle.innerHTML = selectedImage.alt;
     } else {
       lightboxVideo.src = "";
+      lightboxVideo.controls = false;
       lightboxImg.src = selectedImage.dataset.imagesrc;
       lightboxTitle.innerHTML = selectedImage.alt;
     }
