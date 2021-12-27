@@ -67,18 +67,16 @@ export async function displayMedia(medias, sortType = "likes") {
       lightboxImg.src = "";
       lightboxVideo.src = selectedImage.dataset.imagesrc;
       lightboxVideo.controls = true;
-      lightboxTitle.innerHTML = selectedImage.alt;
     } else {
       lightboxVideo.src = "";
       lightboxVideo.controls = false;
       lightboxImg.src = selectedImage.dataset.imagesrc;
-      lightboxTitle.innerHTML = selectedImage.alt;
     }
+    lightboxTitle.innerHTML = selectedImage.alt;
     activeImage = arrayImages.indexOf(selectedImage);
   };
 
   const transitionSlideLeft = () => {
-    console.log("left");
     btnprev.focus();
     activeImage === 0
       ? setActiveImage(arrayImages[lastImage])
@@ -112,6 +110,18 @@ export async function displayMedia(medias, sortType = "likes") {
       transitionSlideHandler(e.currentTarget.id);
     })
   );
+
+  //navigation lightbox
+
+  window.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("open")) return;
+    if (e.key.includes("Left")) {
+      transitionSlideLeft();
+    }
+    if (e.key.includes("Right")) {
+      transitionSlideRight();
+    }
+  });
 
   //end lightbox
 }
