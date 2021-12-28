@@ -19,9 +19,7 @@ export function mediaFactory(data) {
     } else if (video) {
       const videotag = document.createElement("video");
       videotag.className = "lightbox-media video";
-      videotag.setAttribute("controls", "");
       const source = document.createElement("source");
-
       source.setAttribute("type", "video/mp4");
       source.setAttribute("src", `./Sample Photos/${photographerId}/${video}`);
       videotag.dataset.imagesrc = `./Sample Photos/${photographerId}/${video}`;
