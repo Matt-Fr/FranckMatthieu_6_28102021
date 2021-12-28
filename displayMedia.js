@@ -95,7 +95,7 @@ export async function displayMedia(medias, sortType = "likes") {
   //eventListener
 
   images.forEach((image) => {
-    image.addEventListener("click", (e) => {
+    image.addEventListener("click", () => {
       showLightbox();
       setActiveImage(image);
     });

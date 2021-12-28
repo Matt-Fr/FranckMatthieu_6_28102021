@@ -1,5 +1,5 @@
 export function mediaFactory(data) {
-  const { id, photographerId, title, video, image, likes, date, price } = data;
+  const { id, photographerId, title, video, image, likes } = data;
 
   function getMediaCard() {
     const article = document.createElement("article");
