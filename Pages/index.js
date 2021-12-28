@@ -5,7 +5,6 @@ async function getPhotographers() {
   const data = await response.json();
   const photographers = data.photographers;
 
-  // et bien retourner le tableau photographers seulement une fois
   return {
     photographers: [...photographers],
   };
