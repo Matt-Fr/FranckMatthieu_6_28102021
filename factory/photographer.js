@@ -13,6 +13,7 @@ export function photographerFactory(data) {
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     img.className = "photograph-img";
+    img.setAttribute("alt", `${name}`);
     const h2 = document.createElement("h2");
     h2.textContent = name;
     h2.className = "photograph-name";

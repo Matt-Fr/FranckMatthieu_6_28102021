@@ -38,6 +38,7 @@ export function mediaFactory(data) {
     divDecription.appendChild(titleMedia);
     const divHeart = document.createElement("div");
     divHeart.className = "heart-container";
+    divHeart.setAttribute("aria-label", "likes");
     divHeart.addEventListener("click", () => {
       const likes = heart.parentElement.querySelector(".number-likes");
       if (heart.classList.contains("clicked")) {
