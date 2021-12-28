@@ -72,7 +72,7 @@ export async function displayMedia(medias, sortType = "likes") {
       lightboxVideo.controls = false;
       lightboxImg.src = selectedImage.dataset.imagesrc;
     }
-    lightboxTitle.innerHTML = selectedImage.alt;
+    lightboxTitle.innerHTML = selectedImage.getAttribute("alt");
     activeImage = arrayImages.indexOf(selectedImage);
   };
 
