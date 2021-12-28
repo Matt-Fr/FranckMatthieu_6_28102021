@@ -1,12 +1,5 @@
-import { api } from "../api.js";
-import {
-  displayPhotographer,
-  getPhotographerById,
-} from "../displayPhotographer.js";
-
+import { displayPhotographer } from "../displayPhotographer.js";
 import { getMedia } from "../getMedia.js";
-
-import { mediaFactory } from "../factory/mediaFactory.js";
 import { displayMedia } from "../displayMedia.js";
 import { contactForm } from "./contactForm.js";
 

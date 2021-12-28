@@ -1,4 +1,4 @@
-import { api } from "../api.js";
+import { api } from "./api.js";
 
 //faire matcher les infos du photographe avec l'url
 export const getPhotographerById = async () => {
