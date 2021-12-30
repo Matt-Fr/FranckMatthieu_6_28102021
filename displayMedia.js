@@ -49,20 +49,20 @@ export async function displayMedia(medias, sortType = "likes") {
   const lightboxTitle = document.querySelector(".image-name");
   const lightboxVideo = document.querySelector("#lightbox-video");
   let activeImage;
-  console.log(arrayImages);
 
   //function
 
   const showLightbox = () => {
     lightbox.classList.add("open");
+    lightbox.ariaModal = "true";
   };
 
   const hideLightbox = () => {
     lightbox.classList.remove("open");
+    lightbox.ariaModal = "false";
   };
 
   const setActiveImage = (selectedImage) => {
-    console.log(selectedImage);
     if (selectedImage.classList.contains("video")) {
       lightboxImg.src = "";
       lightboxVideo.src = selectedImage.dataset.imagesrc;
@@ -120,6 +120,9 @@ export async function displayMedia(medias, sortType = "likes") {
     }
     if (e.key.includes("Right")) {
       transitionSlideRight();
+    }
+    if (e.key.includes("Escape")) {
+      hideLightbox();
     }
   });
 
