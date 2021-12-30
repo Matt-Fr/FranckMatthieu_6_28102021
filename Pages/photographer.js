@@ -1,7 +1,7 @@
 import { displayPhotographer } from "../displayPhotographer.js";
 import { getMedia } from "../getMedia.js";
 import { displayMedia } from "../displayMedia.js";
-import { contactForm } from "./contactForm.js";
+import { contactForm } from "../contactForm.js";
 
 //display le photographe et ses infos sur la page photograph.html
 displayPhotographer();
