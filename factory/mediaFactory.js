@@ -13,6 +13,7 @@ export function mediaFactory(data) {
       const pic = document.createElement("img");
       pic.setAttribute("src", `./Sample Photos/${photographerId}/${image}`);
       pic.setAttribute("alt", `${title}`);
+      pic.setAttribute("tabindex", "0");
       pic.className = "lightbox-media image";
       pic.dataset.imagesrc = `./Sample Photos/${photographerId}/${image}`;
       linkPicture.appendChild(pic);
@@ -24,6 +25,7 @@ export function mediaFactory(data) {
       source.setAttribute("src", `./Sample Photos/${photographerId}/${video}`);
       videotag.dataset.imagesrc = `./Sample Photos/${photographerId}/${video}`;
       videotag.setAttribute("alt", `${title}`);
+      videotag.setAttribute("tabindex", "0");
       videotag.appendChild(source);
       linkPicture.appendChild(videotag);
     }
@@ -33,10 +35,15 @@ export function mediaFactory(data) {
     const titleMedia = document.createElement("h3");
     titleMedia.className = "img-title";
     titleMedia.textContent = title;
+    titleMedia.setAttribute("tabindex", "0");
     divDecription.appendChild(titleMedia);
     const divHeart = document.createElement("div");
     divHeart.className = "heart-container";
-    divHeart.setAttribute("aria-label", "likes");
+    divHeart.setAttribute(
+      "aria-label",
+      "clickez pour ajouter un like à l'image"
+    );
+    divHeart.setAttribute("tabindex", "0");
     divHeart.addEventListener("click", () => {
       const likes = heart.parentElement.querySelector(".number-likes");
       if (heart.classList.contains("clicked")) {
