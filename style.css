@@ -483,6 +483,7 @@ body {
   border: none;
   font-size: 2rem;
   z-index: 100;
+  cursor: pointer;
 }
 
 .btn-form {

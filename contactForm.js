@@ -5,14 +5,31 @@ export function contactForm() {
   const form = document.querySelector(".form");
   const message = document.querySelector("#form-message");
 
-  btn.addEventListener("click", () => {
+  const openModal = () => {
     bgForm.classList.add("open");
     bgForm.ariaModal = "true";
+  };
+
+  const closeModal = () => {
+    bgForm.classList.remove("open");
+    bgForm.ariaModal = "false";
+  };
+
+  btn.addEventListener("click", () => {
+    openModal();
   });
 
   btnCloseForm.addEventListener("click", () => {
-    bgForm.classList.remove("open");
-    bgForm.ariaModal = "false";
+    closeModal();
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (!bgForm.classList.contains("open")) {
+      return;
+    }
+    if (e.key.includes("Escape")) {
+      closeModal();
+    }
   });
 
   function checkFirstName() {
