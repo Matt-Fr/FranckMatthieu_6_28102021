@@ -7,10 +7,12 @@ export function contactForm() {
 
   btn.addEventListener("click", () => {
     bgForm.classList.add("open");
+    bgForm.ariaModal = "true";
   });
 
   btnCloseForm.addEventListener("click", () => {
     bgForm.classList.remove("open");
+    bgForm.ariaModal = "false";
   });
 
   function checkFirstName() {

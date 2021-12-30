@@ -40,7 +40,12 @@
 
       <!-- vertical dropdown menu -->
       <div class="container-label">
-        <label id="label-criteria" for="criteria">Trier par</label>
+        <label
+          id="label-criteria"
+          for="criteria"
+          aria-label="menu de tri par catégories"
+          >Trier par</label
+        >
 
         <select name="criteria" id="criteria">
           <option value="likes">Popularité</option>
@@ -86,7 +91,7 @@
 
       <!-- modal -->
 
-      <div class="bg-form">
+      <div class="bg-form" aria-modal="false">
         <div class="container-form">
           <h1 class="title-form">Contactez-moi Mimi Keel</h1>
           <button class="close-btn-modal" aria-label="close contact form">
