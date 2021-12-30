@@ -72,8 +72,7 @@ export function contactForm() {
       bgForm.classList.remove("open");
 
       form.reset();
-    } else {
-      // alert("Une erreur a été rencontrée.");
+      alert("message envoyé avec succès");
     }
   });
 }
