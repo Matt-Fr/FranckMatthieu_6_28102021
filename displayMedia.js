@@ -4,7 +4,7 @@ import { mediaFactory } from "./factory/mediaFactory.js";
 export async function displayMedia(medias, sortType = "likes") {
   const sectionMedia = document.querySelector(".section-photo-container");
 
-  const sortedMedias = [...medias];
+  let sortedMedias = [...medias];
 
   switch (sortType) {
     case "likes":
@@ -34,6 +34,40 @@ export async function displayMedia(medias, sortType = "likes") {
     const cardMedia = mediaModel.getMediaCard();
     sectionMedia.appendChild(cardMedia);
   });
+
+  //like
+  document.getElementById("totalLikes").innerHTML = sortedMedias.reduce(
+    (a, b) => (a += b.likes),
+    0
+  );
+
+  Array.from(document.getElementsByClassName("heart-container")).forEach(
+    (el) => {
+      el.addEventListener("click", (e) => {
+        let target = e.target;
+        if (!e.target.getAttribute("data-id")) {
+          target = e.target.parentElement;
+        }
+        let id = target.getAttribute("data-id");
+        let nbLikes;
+        sortedMedias = sortedMedias.map((m) => {
+          if (m.id == id) {
+            m.likes++;
+            nbLikes = m.likes;
+            console.log(nbLikes);
+          }
+          return m;
+        });
+        Array.from(target.children).find(
+          (el) => el.tagName.toLowerCase() === "span"
+        ).innerHTML = nbLikes;
+        document.getElementById("totalLikes").innerHTML = sortedMedias.reduce(
+          (a, b) => (a += b.likes),
+          0
+        );
+      });
+    }
+  );
 
   // Lightbox
 
