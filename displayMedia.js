@@ -45,19 +45,32 @@ export async function displayMedia(medias, sortType = "likes") {
     (el) => {
       el.addEventListener("click", (e) => {
         let target = e.target;
+
         if (!e.target.getAttribute("data-id")) {
+          //séléctionner le parent du target si ce n'est pas heart-container
           target = e.target.parentElement;
+          //là target est toujours heart-container
         }
         let id = target.getAttribute("data-id");
         let nbLikes;
         sortedMedias = sortedMedias.map((m) => {
+          //si l'ID des médias du sorted média est le même que le target ID
           if (m.id == id) {
-            m.likes++;
+            if (target.classList.contains("clicked")) {
+              m.likes--;
+              target.classList.remove("clicked");
+            } else {
+              m.likes++;
+              target.classList.add("clicked");
+            }
+
             nbLikes = m.likes;
+            //nbLikes <= le nombre de likes du média changé
             console.log(nbLikes);
           }
           return m;
         });
+
         Array.from(target.children).find(
           (el) => el.tagName.toLowerCase() === "span"
         ).innerHTML = nbLikes;
