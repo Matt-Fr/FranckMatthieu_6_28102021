@@ -4,10 +4,12 @@ export function contactForm() {
   const btnCloseForm = document.querySelector(".close-btn-modal");
   const form = document.querySelector(".form");
   const message = document.querySelector("#form-message");
+  const first = document.querySelector("#first");
 
   const openModal = () => {
     bgForm.classList.add("open");
     bgForm.ariaModal = "true";
+    first.focus();
   };
 
   const closeModal = () => {
