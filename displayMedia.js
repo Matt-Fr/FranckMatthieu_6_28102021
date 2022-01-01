@@ -44,43 +44,52 @@ export async function displayMedia(medias, sortType = "likes") {
   Array.from(document.getElementsByClassName("heart-container")).forEach(
     (el) => {
       el.addEventListener("click", (e) => {
-        let target = e.target;
-
-        if (!e.target.getAttribute("data-id")) {
-          //séléctionner le parent du target si ce n'est pas heart-container
-          target = e.target.parentElement;
-          //là target est toujours heart-container
+        addHeart(e);
+      });
+      el.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {
+          addHeart(e);
         }
-        let id = target.getAttribute("data-id");
-        let nbLikes;
-        sortedMedias = sortedMedias.map((m) => {
-          //si l'ID des médias du sorted média est le même que le target ID
-          if (m.id == id) {
-            if (target.classList.contains("clicked")) {
-              m.likes--;
-              target.classList.remove("clicked");
-            } else {
-              m.likes++;
-              target.classList.add("clicked");
-            }
-
-            nbLikes = m.likes;
-            //nbLikes <= le nombre de likes du média changé
-            console.log(nbLikes);
-          }
-          return m;
-        });
-
-        Array.from(target.children).find(
-          (el) => el.tagName.toLowerCase() === "span"
-        ).innerHTML = nbLikes;
-        document.getElementById("totalLikes").innerHTML = sortedMedias.reduce(
-          (a, b) => (a += b.likes),
-          0
-        );
       });
     }
   );
+
+  function addHeart(e) {
+    let target = e.target;
+
+    if (!e.target.getAttribute("data-id")) {
+      //séléctionner le parent du target si ce n'est pas heart-container
+      target = e.target.parentElement;
+      //là target est toujours heart-container
+    }
+    let id = target.getAttribute("data-id");
+    let nbLikes;
+    sortedMedias = sortedMedias.map((m) => {
+      //si l'ID des médias du sorted média est le même que le target ID
+      if (m.id == id) {
+        if (target.classList.contains("clicked")) {
+          m.likes--;
+          target.classList.remove("clicked");
+        } else {
+          m.likes++;
+          target.classList.add("clicked");
+        }
+
+        nbLikes = m.likes;
+        //nbLikes <= le nombre de likes du média changé
+        console.log(nbLikes);
+      }
+      return m;
+    });
+
+    Array.from(target.children).find(
+      (el) => el.tagName.toLowerCase() === "span"
+    ).innerHTML = nbLikes;
+    document.getElementById("totalLikes").innerHTML = sortedMedias.reduce(
+      (a, b) => (a += b.likes),
+      0
+    );
+  }
 
   // Lightbox
 
@@ -145,6 +154,12 @@ export async function displayMedia(medias, sortType = "likes") {
     image.addEventListener("click", () => {
       showLightbox();
       setActiveImage(image);
+    });
+    image.addEventListener("keydown", (e) => {
+      if (e.code === "Enter") {
+        showLightbox();
+        setActiveImage(image);
+      }
     });
   });
 
