@@ -54,7 +54,7 @@ export async function displayMedia(medias, sortType = "likes") {
     }
   );
 
-  function addHeart(e) {
+  const addHeart = (e) => {
     let target = e.target;
 
     if (!e.target.getAttribute("data-id")) {
@@ -89,7 +89,7 @@ export async function displayMedia(medias, sortType = "likes") {
       (a, b) => (a += b.likes),
       0
     );
-  }
+  };
 
   // Lightbox
 
