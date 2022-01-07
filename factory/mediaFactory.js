@@ -44,17 +44,7 @@ export function mediaFactory(data) {
       "clickez pour ajouter un like à l'image"
     );
     divHeart.setAttribute("tabindex", "0");
-    // divHeart.addEventListener("click", () => {
-    //   const likes = heart.parentElement.querySelector(".number-likes");
-    //   if (heart.classList.contains("clicked")) {
-    //     likes.innerHTML = parseInt(likes.innerHTML) - 1;
-    //     heart.classList.remove("clicked");
-    //   } else {
-    //     likes.innerHTML = parseInt(likes.innerHTML) + 1;
-    //     heart.classList.add("clicked");
-    //   }
-    //   getTotalLikes();
-    // });
+
     divDecription.appendChild(divHeart);
     const numberLikes = document.createElement("span");
     numberLikes.className = "number-likes";
@@ -64,19 +54,6 @@ export function mediaFactory(data) {
     const heart = document.createElement("i");
     heart.className = "fas fa-heart";
     divHeart.appendChild(heart);
-
-    // obtenir le nombre total de like
-    // function getTotalLikes() {
-    //   const totalLikeSpan = document.querySelectorAll(".number-likes");
-    //   let totalLikes = 0;
-    //   totalLikeSpan.forEach((likes) => {
-    //     totalLikes += parseInt(likes.innerHTML);
-    //     const likeCounter = document.querySelector(".total-likes");
-    //     likeCounter.innerHTML = `<span class="total-likes">
-    //           ${totalLikes} <i class="fas fa-heart"></i>
-    //         </span>`;
-    //   });
-    // }
 
     return article;
   }
