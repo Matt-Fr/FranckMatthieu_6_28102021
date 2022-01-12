@@ -36,7 +36,7 @@ export function contactForm() {
 
   function checkFirstName() {
     const inputValueFirst = document.getElementById("first").value.trim();
-
+    console.log("prénom: " + inputValueFirst);
     const isFirstValid = inputValueFirst.length >= 2;
     document.getElementsByClassName("error-msg")[0].style.display = isFirstValid
       ? "none"
@@ -46,7 +46,7 @@ export function contactForm() {
 
   function checkLastName() {
     const inputValueLast = document.getElementById("last").value.trim();
-
+    console.log("nom: " + inputValueLast);
     const isLastValid = inputValueLast.length >= 2;
     document.getElementsByClassName("error-msg")[1].style.display = isLastValid
       ? "none"
@@ -62,6 +62,7 @@ export function contactForm() {
   function checkEmail() {
     const emailValue = document.getElementById("email").value.trim();
     const isEmailValid = isEmail(emailValue);
+    console.log("email: " + emailValue);
     document.getElementsByClassName("error-msg")[2].style.display = isEmailValid
       ? "none"
       : "block";
@@ -70,7 +71,7 @@ export function contactForm() {
 
   function checkMessage() {
     const messageValue = message.value.trim();
-
+    console.log("message: " + messageValue);
     const isMessageValid = messageValue.length >= 10;
     document.getElementsByClassName("error-msg")[3].style.display =
       isMessageValid ? "none" : "block";
