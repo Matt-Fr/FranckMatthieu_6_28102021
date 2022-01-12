@@ -127,7 +127,7 @@ export async function displayMedia(medias, sortType = "likes") {
       lightboxVideo.controls = false;
       lightboxImg.src = selectedImage.dataset.imagesrc;
     }
-    console.log(selectedImage);
+
     lightboxTitle.innerHTML = selectedImage.getAttribute("title");
     activeImage = arrayImages.indexOf(selectedImage);
   };
