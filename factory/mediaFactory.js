@@ -1,5 +1,5 @@
 export function mediaFactory(data) {
-  const { id, photographerId, title, video, image, likes } = data;
+  const { id, photographerId, title, altText, video, image, likes } = data;
 
   function getMediaCard() {
     const article = document.createElement("article");
@@ -12,7 +12,7 @@ export function mediaFactory(data) {
     if (image) {
       const pic = document.createElement("img");
       pic.setAttribute("src", `./Sample Photos/${photographerId}/${image}`);
-      pic.setAttribute("alt", `${title}`);
+      pic.setAttribute("alt", `${altText}`);
       pic.setAttribute("tabindex", "0");
       pic.className = "lightbox-media image";
       pic.dataset.imagesrc = `./Sample Photos/${photographerId}/${image}`;
@@ -24,7 +24,7 @@ export function mediaFactory(data) {
       source.setAttribute("type", "video/mp4");
       source.setAttribute("src", `./Sample Photos/${photographerId}/${video}`);
       videotag.dataset.imagesrc = `./Sample Photos/${photographerId}/${video}`;
-      videotag.setAttribute("alt", `${title}`);
+      videotag.setAttribute("alt", `${altText}`);
       videotag.setAttribute("tabindex", "0");
       videotag.appendChild(source);
       linkPicture.appendChild(videotag);
