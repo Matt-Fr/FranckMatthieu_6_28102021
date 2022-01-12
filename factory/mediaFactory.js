@@ -13,6 +13,7 @@ export function mediaFactory(data) {
       const pic = document.createElement("img");
       pic.setAttribute("src", `./Sample Photos/${photographerId}/${image}`);
       pic.setAttribute("alt", `${altText}`);
+      pic.setAttribute("title", `${title}`);
       pic.setAttribute("tabindex", "0");
       pic.className = "lightbox-media image";
       pic.dataset.imagesrc = `./Sample Photos/${photographerId}/${image}`;
@@ -25,6 +26,7 @@ export function mediaFactory(data) {
       source.setAttribute("src", `./Sample Photos/${photographerId}/${video}`);
       videotag.dataset.imagesrc = `./Sample Photos/${photographerId}/${video}`;
       videotag.setAttribute("alt", `${altText}`);
+      videotag.setAttribute("title", `${title}`);
       videotag.setAttribute("tabindex", "0");
       videotag.appendChild(source);
       linkPicture.appendChild(videotag);
