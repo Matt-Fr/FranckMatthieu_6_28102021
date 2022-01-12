@@ -18,7 +18,6 @@ export async function displayMedia(medias, sortType = "likes") {
       break;
 
     case "title":
-      // sortedMedias.sort((a, b) => a.title.localeCompare(b.title));
       sortedMedias.sort(function (a, b) {
         return a.title === b.title ? 0 : a.title < b.title ? -1 : 1;
       });
@@ -35,12 +34,13 @@ export async function displayMedia(medias, sortType = "likes") {
     sectionMedia.appendChild(cardMedia);
   });
 
-  //like
+  //Total likes
   document.getElementById("totalLikes").innerHTML = sortedMedias.reduce(
     (a, b) => (a += b.likes),
     0
   );
 
+  //add a like to a media
   Array.from(document.getElementsByClassName("heart-container")).forEach(
     (el) => {
       el.addEventListener("click", (e) => {
@@ -57,15 +57,13 @@ export async function displayMedia(medias, sortType = "likes") {
   const addHeart = (e) => {
     let target = e.target;
 
+    //séléctionner le parent de la cible si ce n'est pas la div heart-container
     if (!e.target.getAttribute("data-id")) {
-      //séléctionner le parent du target si ce n'est pas heart-container
       target = e.target.parentElement;
-      //là target est toujours heart-container
     }
     let id = target.getAttribute("data-id");
     let nbLikes;
     sortedMedias = sortedMedias.map((m) => {
-      //si l'ID des médias du sorted média est le même que le target ID
       if (m.id == id) {
         if (target.classList.contains("clicked")) {
           m.likes--;
@@ -74,17 +72,16 @@ export async function displayMedia(medias, sortType = "likes") {
           m.likes++;
           target.classList.add("clicked");
         }
-
         nbLikes = m.likes;
-        //nbLikes <= le nombre de likes du média changé
-        console.log(nbLikes);
       }
       return m;
     });
 
+    // adding the number of likes to the span
     Array.from(target.children).find(
       (el) => el.tagName.toLowerCase() === "span"
     ).innerHTML = nbLikes;
+    //recalculer le nombre total de likes
     document.getElementById("totalLikes").innerHTML = sortedMedias.reduce(
       (a, b) => (a += b.likes),
       0
@@ -98,12 +95,13 @@ export async function displayMedia(medias, sortType = "likes") {
   const btnNext = document.querySelector("#next");
   const btnprev = document.querySelector("#prev");
   const images = document.querySelectorAll(".lightbox-media");
-  const arrayImages = Array.from(images);
-  const lastImage = arrayImages.length - 1;
   const lightboxImg = document.querySelector(".main-img");
   const closeBtn = document.querySelector(".close-btn");
   const lightboxTitle = document.querySelector(".image-name");
   const lightboxVideo = document.querySelector("#lightbox-video");
+  //create an array for images
+  const arrayImages = Array.from(images);
+  const lastImage = arrayImages.length - 1;
   let activeImage;
 
   //function
@@ -118,6 +116,7 @@ export async function displayMedia(medias, sortType = "likes") {
     lightbox.ariaModal = "false";
   };
 
+  // ajouter la src de du média + l'index
   const setActiveImage = (selectedImage) => {
     if (selectedImage.classList.contains("video")) {
       lightboxImg.src = "";
@@ -148,6 +147,7 @@ export async function displayMedia(medias, sortType = "likes") {
   const transitionSlideHandler = (moveItem) => {
     moveItem.includes("prev") ? transitionSlideLeft() : transitionSlideRight();
   };
+
   //eventListener
 
   images.forEach((image) => {
@@ -173,7 +173,7 @@ export async function displayMedia(medias, sortType = "likes") {
     })
   );
 
-  //navigation lightbox
+  //navigation clavier lightbox
 
   window.addEventListener("keydown", (e) => {
     if (!lightbox.classList.contains("open")) return;

@@ -1,6 +1,6 @@
 import { api } from "./api.js";
 
-//obtenir les médias à partir de l'api
+//obtenir les médias à partir de l'api et de l'ID du photographe
 export const getMedia = async () => {
   const urlSearchParams = new URLSearchParams(window.location.search);
   const id = parseInt(urlSearchParams.get("id"));
