@@ -577,3 +577,10 @@ body {
   width: 2rem;
   
 }
+#total-heart{
+  height: 0.9rem;
+}
+.total-likes{
+  display: flex;
+  align-items: center;
+}
