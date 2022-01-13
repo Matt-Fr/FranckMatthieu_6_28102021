@@ -28,10 +28,14 @@ export async function displayMedia(medias, sortType = "likes") {
       break;
   }
   sectionMedia.innerHTML = "";
+  // sortedMedias.forEach((media) => {
+  //   const mediaModel = mediaFactory(media);
+  //   const cardMedia = mediaModel.getMediaCard();
+  //   sectionMedia.appendChild(cardMedia);
+  // });
   sortedMedias.forEach((media) => {
     const mediaModel = mediaFactory(media);
-    const cardMedia = mediaModel.getMediaCard();
-    sectionMedia.appendChild(cardMedia);
+    sectionMedia.appendChild(mediaModel);
   });
 
   //Total likes
