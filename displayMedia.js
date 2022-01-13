@@ -40,7 +40,7 @@ export async function displayMedia(medias, sortType = "likes") {
     0
   );
 
-  //add a like to a media
+  //clicker sur la div pour incrémenter le nb de coeur
   Array.from(document.getElementsByClassName("heart-container")).forEach(
     (el) => {
       el.addEventListener("click", (e) => {
@@ -77,7 +77,7 @@ export async function displayMedia(medias, sortType = "likes") {
       return m;
     });
 
-    // adding the number of likes to the span
+    // Trouver et incrémenter le span de la div
     Array.from(target.children).find(
       (el) => el.tagName.toLowerCase() === "span"
     ).innerHTML = nbLikes;
@@ -106,11 +106,13 @@ export async function displayMedia(medias, sortType = "likes") {
 
   //function
 
+  // Mettre la lightbox en premier plan
   const showLightbox = () => {
     lightbox.classList.add("open");
     lightbox.ariaModal = "true";
   };
 
+  //cacher la lightbox
   const hideLightbox = () => {
     lightbox.classList.remove("open");
     lightbox.ariaModal = "false";
@@ -132,12 +134,14 @@ export async function displayMedia(medias, sortType = "likes") {
     activeImage = arrayImages.indexOf(selectedImage);
   };
 
+  //transition sur la gauche
   const transitionSlideLeft = () => {
     btnprev.focus();
     activeImage === 0
       ? setActiveImage(arrayImages[lastImage])
       : setActiveImage(arrayImages[activeImage - 1]);
   };
+  //transition sur la droite
   const transitionSlideRight = () => {
     btnNext.focus();
     activeImage === lastImage
@@ -145,6 +149,7 @@ export async function displayMedia(medias, sortType = "likes") {
       : setActiveImage(arrayImages[activeImage + 1]);
   };
 
+  //transition selon l'ID des voutons de la lightbox
   const transitionSlideHandler = (moveItem) => {
     moveItem.includes("prev") ? transitionSlideLeft() : transitionSlideRight();
   };

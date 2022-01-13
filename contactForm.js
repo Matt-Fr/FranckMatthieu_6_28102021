@@ -6,12 +6,14 @@ export function contactForm() {
   const message = document.querySelector("#form-message");
   const first = document.querySelector("#first");
 
+  //ouvrir la modal
   const openModal = () => {
     bgForm.classList.add("open");
     bgForm.ariaModal = "true";
     first.focus();
   };
 
+  //fermer la modal
   const closeModal = () => {
     bgForm.classList.remove("open");
     bgForm.ariaModal = "false";
@@ -34,6 +36,7 @@ export function contactForm() {
     }
   });
 
+  //vérification du prénom
   function checkFirstName() {
     const inputValueFirst = document.getElementById("first").value.trim();
     console.log("prénom: " + inputValueFirst);
@@ -44,6 +47,7 @@ export function contactForm() {
     return isFirstValid;
   }
 
+  //vérification du nom
   function checkLastName() {
     const inputValueLast = document.getElementById("last").value.trim();
     console.log("nom: " + inputValueLast);
@@ -54,6 +58,7 @@ export function contactForm() {
     return isLastValid;
   }
 
+  //vérification de l'email avec regex
   function isEmail(email) {
     return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
       email
@@ -68,7 +73,7 @@ export function contactForm() {
       : "block";
     return isEmailValid;
   }
-
+  //vérification du message
   function checkMessage() {
     const messageValue = message.value.trim();
     console.log("message: " + messageValue);
@@ -78,11 +83,10 @@ export function contactForm() {
     return isMessageValid;
   }
 
-  //prevent form to close if errors
-
   form.addEventListener("submit", (e) => {
+    //prévenir du comportement par défaut
     e.preventDefault();
-
+    //vérifier si tous les champs sont valides
     let isFormValid = true;
     isFormValid = checkFirstName() && isFormValid;
     isFormValid = checkLastName() && isFormValid;

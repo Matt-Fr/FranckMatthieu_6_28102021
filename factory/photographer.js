@@ -1,3 +1,4 @@
+//créer la carte pour un photographe
 export function photographerFactory(data) {
   const { name, id, portrait, city, tagline, price } = data;
 

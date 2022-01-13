@@ -1,5 +1,6 @@
 import { photographerFactory } from "../factory/photographer.js";
 
+//récupérer les données des photographes
 async function getPhotographers() {
   const response = await fetch("./photographers.json");
   const data = await response.json();
@@ -10,6 +11,7 @@ async function getPhotographers() {
   };
 }
 
+//créer une carte pour chaque photographe avec la factory
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photograph-container");
 
@@ -21,7 +23,6 @@ async function displayData(photographers) {
 }
 
 async function init() {
-  // Récupère les datas des photographes
   const { photographers } = await getPhotographers();
   displayData(photographers);
 }
