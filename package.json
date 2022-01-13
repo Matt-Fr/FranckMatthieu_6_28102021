@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "lint": "eslint '**/*.js' --ignore-pattern node_modules/"
+    
+  },
   "devDependencies": {
     "eslint": "^8.5.0"
   }

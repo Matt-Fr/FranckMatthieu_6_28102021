@@ -31,7 +31,7 @@ export function contactForm() {
     if (!bgForm.classList.contains("open")) {
       return;
     }
-    if (e.key.includes("Escape")) {
+    if (e.key && e.key.includes("Escape")) {
       closeModal();
     }
   });
